@@ -1,0 +1,47 @@
+{
+  "slug": "ogery-camping-fan",
+  "title": "Ogery Camping Fan",
+  "variant": "demo",
+  "theme": "A big-battery camping fan that swings, lights, and charges your phone \u2014 watch it work.",
+  "brain_reason": "He shows it in use \u2014 270\u00b0 swing, hanging in a tent, the light and power bank. Lead on the in-use beats.",
+  "edit_notes": "Regen fixes applied (complete sentences, generous end buffers, fluid). Demo-led: keeps the in-use beats whole (270\u00b0+hang as one sentence, the remote/light/power-bank run as one). Dropped only the standalone 'send to whoever you camp with' line to stay demo-forward.",
+  "grade": "subtle",
+  "compliance_dropped": [],
+  "other_variants": [
+    {
+      "style": "value",
+      "theme": "Everything the Ogery fan does \u2014 65h battery, 270\u00b0 swing, tent-hang, light, remote, power bank.",
+      "reason": "Short 43s read packed with features \u2014 keep it whole and fluid: battery, 270\u00b0 swing, tent-hang, remote, light, power bank.",
+      "duration": 24.75
+    },
+    {
+      "style": "scarcity",
+      "theme": "The summer camping fan that runs for days and sells through fast \u2014 grab one now.",
+      "reason": "Genuine SEASONAL demand \u2014 a summer fan he says will 'run out quickly for the summer'. Real demand, not a fake deadline; urgency stays in the voice.",
+      "duration": 17.0
+    }
+  ],
+  "stats": {
+    "raw_duration_s": 46.1,
+    "output_duration_s": 20.1,
+    "kept_ratio": 0.436,
+    "segments": 8,
+    "kept_span_s": 20.04,
+    "transcribed_words": 116,
+    "overlays": 4
+  },
+  "qa": {
+    "video_dur": 20.08,
+    "audio_dur": 20.1,
+    "av_drift": 0.017,
+    "sync_ok": true,
+    "black_ok": true
+  },
+  "qa_frames": [
+    "kw_0.jpg",
+    "kw_1.jpg",
+    "kw_2.jpg",
+    "kw_3.jpg"
+  ],
+  "has_contact_sheet": true
+}

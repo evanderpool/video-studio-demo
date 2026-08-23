@@ -1,0 +1,89 @@
+{
+  "title": "ZipString Arachnid (Web-Shooter)",
+  "theme": "A web-shooter toy that fires string, auto-returns it, and glows \u2014 watch it shoot.",
+  "notes": "Demo-led + TIGHT per the last regen note \u2014 no silent staging gaps kept; every span has narration audio (he's shooting webs while he talks). Dropped the duplicate 'want to shoot webs all day' sentence and the trailing 'that's them, enjoy' ramble. 'Spider-Man' stays in his voice only \u2014 never in a pop (trademark).",
+  "grade": "subtle",
+  "pop_style": "accent",
+  "ranges": [
+    {
+      "start": 38.4,
+      "end": 40.38,
+      "beat": "hook: your kids are going to lose their mind with this",
+      "motion": "in"
+    },
+    {
+      "start": 44.18,
+      "end": 46.12,
+      "beat": "they'll want to shoot webs all day",
+      "motion": "out"
+    },
+    {
+      "start": 31.63,
+      "end": 35.16,
+      "beat": "it's the ZipString Arachnid \u2014 feel like Spider-Man",
+      "motion": "in"
+    },
+    {
+      "start": 74.74,
+      "end": 77.97,
+      "beat": "spits out string at 35 miles an hour",
+      "motion": "out"
+    },
+    {
+      "start": 90.47,
+      "end": 93.66,
+      "beat": "best part: it brings the string right back into its containe",
+      "motion": "in"
+    },
+    {
+      "start": 96.59,
+      "end": 100.42,
+      "beat": "no tangles \u2014 super easy and fun for kids",
+      "motion": "out"
+    },
+    {
+      "start": 105.2,
+      "end": 107.12,
+      "beat": "USB-C rechargeable",
+      "motion": "in"
+    },
+    {
+      "start": 108.79,
+      "end": 111.58,
+      "beat": "glows in the dark + you get five strings",
+      "motion": "out"
+    },
+    {
+      "start": 116.35,
+      "end": 120.82,
+      "beat": "flies off the shelf in summer \u2014 grab yours, link below (CTA)",
+      "motion": "in"
+    }
+  ],
+  "overlays": [
+    {
+      "text": "SHOOTS A STRING WEB",
+      "style": "accent",
+      "start_in_output": 2.5,
+      "duration": 2.0
+    },
+    {
+      "text": "STRING AUTO-RETURNS",
+      "style": "accent",
+      "start_in_output": 11.91,
+      "duration": 2.0
+    },
+    {
+      "text": "USB-C RECHARGEABLE",
+      "style": "accent",
+      "start_in_output": 18.2,
+      "duration": 1.8
+    },
+    {
+      "text": "GLOWS IN THE DARK",
+      "style": "accent",
+      "start_in_output": 20.13,
+      "duration": 1.8
+    }
+  ]
+}

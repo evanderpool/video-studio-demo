@@ -1,0 +1,97 @@
+{
+  "title": "ZipString Luma \u2014 Stars & Stripes (July 4th)",
+  "theme": "Watch the tricks \u2014 a glow-in-the-dark string toy kids go wild for, 4th-of-July edition.",
+  "notes": "Demo-led with the dead-space removed: vortex + bow trimmed to the swing. Still covers the 35mph, glow, and 5-strings features; urgency in the CTA.",
+  "grade": "subtle",
+  "pop_style": "accent",
+  "ranges": [
+    {
+      "start": 4.44,
+      "end": 6.49,
+      "beat": "hook: your kids are going to love this all summer",
+      "motion": "in"
+    },
+    {
+      "start": 10.43,
+      "end": 11.73,
+      "beat": "the limited edition ZipString Luma",
+      "motion": "out"
+    },
+    {
+      "start": 19.37,
+      "end": 21.12,
+      "beat": "the Stars and Stripes edition",
+      "motion": "in"
+    },
+    {
+      "start": 27.5,
+      "end": 30.17,
+      "beat": "spits out a string at 35 miles an hour",
+      "motion": "out"
+    },
+    {
+      "start": 38.46,
+      "end": 40.19,
+      "beat": "my seven-year-old taught me some tricks",
+      "motion": "in"
+    },
+    {
+      "start": 46.06,
+      "end": 49.8,
+      "beat": "the vortex trick (trimmed, no dead space)",
+      "motion": "out",
+      "keep": "verbatim"
+    },
+    {
+      "start": 52.2,
+      "end": 56.3,
+      "beat": "the bow and arrow trick (trimmed)",
+      "motion": "in",
+      "keep": "verbatim"
+    },
+    {
+      "start": 58.89,
+      "end": 60.73,
+      "beat": "it glows in the dark too",
+      "motion": "out"
+    },
+    {
+      "start": 68.14,
+      "end": 70.35,
+      "beat": "comes with five swappable strings",
+      "motion": "in"
+    },
+    {
+      "start": 77.71,
+      "end": 82.8,
+      "beat": "limited edition, not coming back, only for the 4th \u2014 link be",
+      "motion": "out"
+    }
+  ],
+  "overlays": [
+    {
+      "text": "KIDS BORED THIS SUMMER",
+      "style": "accent",
+      "start_in_output": 0.26,
+      "duration": 2.0
+    },
+    {
+      "text": "THE VORTEX",
+      "style": "accent",
+      "start_in_output": 9.74,
+      "duration": 1.8
+    },
+    {
+      "text": "GLOWS IN THE DARK",
+      "style": "accent",
+      "start_in_output": 17.95,
+      "duration": 2.0
+    },
+    {
+      "text": "LIMITED EDITION",
+      "style": "accent",
+      "start_in_output": 21.78,
+      "duration": 2.0
+    }
+  ]
+}

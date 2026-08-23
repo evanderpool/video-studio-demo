@@ -1,0 +1,47 @@
+{
+  "slug": "zipstring-luma-july4",
+  "title": "ZipString Luma \u2014 Stars & Stripes (July 4th)",
+  "variant": "demo",
+  "theme": "Watch the tricks \u2014 a glow-in-the-dark string toy kids go wild for, 4th-of-July edition.",
+  "brain_reason": "He performs the tricks (vortex, bow-and-arrow) and shows the glow \u2014 strong watch-it-work, now without the dead-space tails.",
+  "edit_notes": "Demo-led with the dead-space removed: vortex + bow trimmed to the swing. Still covers the 35mph, glow, and 5-strings features; urgency in the CTA.",
+  "grade": "subtle",
+  "compliance_dropped": [],
+  "other_variants": [
+    {
+      "style": "value",
+      "theme": "Everything the limited 4th-of-July ZipString Luma does \u2014 flies, tricks, glows, 5 strings.",
+      "reason": "Full feature/benefit set (35mph, safe, glow, 5 strings, USB-C) plus the trimmed trick demos and genuine limited-edition urgency.",
+      "duration": 33.0
+    },
+    {
+      "style": "scarcity",
+      "theme": "The limited 4th-of-July ZipString drop \u2014 once it's gone it's gone.",
+      "reason": "GENUINE limited edition \u2014 'not bringing these back, only for the 4th of July.' Real seasonal deadline; urgency runs through the cut in the voice.",
+      "duration": 20.5
+    }
+  ],
+  "stats": {
+    "raw_duration_s": 82.75,
+    "output_duration_s": 26.6,
+    "kept_ratio": 0.321,
+    "segments": 10,
+    "kept_span_s": 26.48,
+    "transcribed_words": 136,
+    "overlays": 4
+  },
+  "qa": {
+    "video_dur": 26.5,
+    "audio_dur": 26.6,
+    "av_drift": 0.1,
+    "sync_ok": true,
+    "black_ok": true
+  },
+  "qa_frames": [
+    "kw_0.jpg",
+    "kw_1.jpg",
+    "kw_2.jpg",
+    "kw_3.jpg"
+  ],
+  "has_contact_sheet": true
+}

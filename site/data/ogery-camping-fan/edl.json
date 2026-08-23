@@ -1,0 +1,83 @@
+{
+  "title": "Ogery Camping Fan",
+  "theme": "A big-battery camping fan that swings, lights, and charges your phone \u2014 watch it work.",
+  "notes": "Regen fixes applied (complete sentences, generous end buffers, fluid). Demo-led: keeps the in-use beats whole (270\u00b0+hang as one sentence, the remote/light/power-bank run as one). Dropped only the standalone 'send to whoever you camp with' line to stay demo-forward.",
+  "grade": "subtle",
+  "pop_style": "accent",
+  "ranges": [
+    {
+      "start": 0.38,
+      "end": 3.98,
+      "beat": "hook: charge once, runs for days",
+      "motion": "in"
+    },
+    {
+      "start": 7.27,
+      "end": 10.82,
+      "beat": "the Ogery camping fan, a must for summer",
+      "motion": "out"
+    },
+    {
+      "start": 13.07,
+      "end": 15.3,
+      "beat": "swings 270 degrees and hangs from a tent",
+      "motion": "in"
+    },
+    {
+      "start": 16.43,
+      "end": 17.84,
+      "beat": "swings 270 degrees and hangs from a tent",
+      "motion": "out"
+    },
+    {
+      "start": 27.79,
+      "end": 29.88,
+      "beat": "remote, use it as a light, and even a power bank",
+      "motion": "in"
+    },
+    {
+      "start": 30.81,
+      "end": 32.12,
+      "beat": "remote, use it as a light, and even a power bank",
+      "motion": "out"
+    },
+    {
+      "start": 34.61,
+      "end": 36.15,
+      "beat": "remote, use it as a light, and even a power bank",
+      "motion": "in"
+    },
+    {
+      "start": 39.6,
+      "end": 43.91,
+      "beat": "runs out fast for summer \u2014 grab it, link below (CTA)",
+      "motion": "out"
+    }
+  ],
+  "overlays": [
+    {
+      "text": "NO AC THIS SUMMER?",
+      "style": "accent",
+      "start_in_output": 0.92,
+      "duration": 2.0
+    },
+    {
+      "text": "270\u00b0 OSCILLATING",
+      "style": "accent",
+      "start_in_output": 8.28,
+      "duration": 1.8
+    },
+    {
+      "text": "BUILT-IN LIGHT + REMOT",
+      "style": "accent",
+      "start_in_output": 12.2,
+      "duration": 2.0
+    },
+    {
+      "text": "USB POWER BANK",
+      "style": "accent",
+      "start_in_output": 14.68,
+      "duration": 1.8
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "title": "Geoorood Pet Water Fountain",
+  "theme": "For pet parents gone all day \u2014 water that runs on its own.",
+  "notes": "Cut + pops UNCHANGED from the approved version (your note: 'everything is great except the captions'). The fade fix is in the render code, not the EDL: (1) overlay template \u2014 the pop exit now fully completes to opacity 0 ~0.2s before the clip ends, with transparent buffer frames, and both the fade-in (smooth slide-up, no bounce) and fade-out (soft, completes) were eased smoother; (2) render.py \u2014 the overlay no longer holds the webm's last frame past its own length, which was freezing the half-faded pop on screen for ~1s ('fragment left behind'). Verified: the pop webm's final frame now renders fully transparent.",
+  "grade": "subtle",
+  "pop_style": "glass",
+  "ranges": [
+    {
+      "start": 1.56,
+      "end": 4.32,
+      "beat": "This is a true cordless pet water fountain.",
+      "motion": "in"
+    },
+    {
+      "start": 12.28,
+      "end": 13.83,
+      "beat": "And you can put this anywhere.",
+      "motion": "out"
+    },
+    {
+      "start": 20.93,
+      "end": 22.56,
+      "beat": "You can take it from your kitchen,",
+      "motion": "in"
+    },
+    {
+      "start": 30.29,
+      "end": 31.82,
+      "beat": "or put it in the living room.",
+      "motion": "out"
+    },
+    {
+      "start": 38.35,
+      "end": 42.58,
+      "beat": "It has a 3.5 liter container, so your dogs have plenty of wa",
+      "motion": "in"
+    },
+    {
+      "start": 46.66,
+      "end": 48.61,
+      "beat": "It's USB-C rechargeable,",
+      "motion": "out"
+    },
+    {
+      "start": 52.25,
+      "end": 57.7,
+      "beat": "and it has two modes \u2014 a motion sensor mode, so every time y",
+      "motion": "in",
+      "keep": "verbatim"
+    },
+    {
+      "start": 59.7,
+      "end": 62.9,
+      "beat": "Or the time mode \u2014 time mode gives your dogs water every hou",
+      "motion": "out",
+      "keep": "verbatim"
+    },
+    {
+      "start": 67.49,
+      "end": 74.6,
+      "beat": "The biggest problem is these are hard to keep in stock. I do",
+      "motion": "in"
+    }
+  ],
+  "overlays": [
+    {
+      "text": "WHO GIVES THEM WATER?",
+      "style": "glass",
+      "start_in_output": 0.0,
+      "duration": 2.8
+    },
+    {
+      "text": "3.5L CAPACITY",
+      "style": "glass",
+      "start_in_output": 7.72,
+      "duration": 2.6
+    },
+    {
+      "text": "USB-C RECHARGEABLE",
+      "style": "glass",
+      "start_in_output": 11.59,
+      "duration": 2.0
+    },
+    {
+      "text": "MOTION SENSOR",
+      "style": "glass",
+      "start_in_output": 15.0,
+      "duration": 2.6
+    }
+  ]
+}

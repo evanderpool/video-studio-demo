@@ -1,0 +1,34 @@
+{
+  "slug": "geoorood-pet-fountain",
+  "title": "Geoorood Pet Water Fountain",
+  "variant": "single",
+  "theme": "For pet parents gone all day \u2014 water that runs on its own.",
+  "brain_reason": null,
+  "edit_notes": "Cut + pops UNCHANGED from the approved version (your note: 'everything is great except the captions'). The fade fix is in the render code, not the EDL: (1) overlay template \u2014 the pop exit now fully completes to opacity 0 ~0.2s before the clip ends, with transparent buffer frames, and both the fade-in (smooth slide-up, no bounce) and fade-out (soft, completes) were eased smoother; (2) render.py \u2014 the overlay no longer holds the webm's last frame past its own length, which was freezing the half-faded pop on screen for ~1s ('fragment left behind'). Verified: the pop webm's final frame now renders fully transparent.",
+  "grade": "subtle",
+  "compliance_dropped": [],
+  "other_variants": [],
+  "stats": {
+    "raw_duration_s": 75.47,
+    "output_duration_s": 29.6,
+    "kept_ratio": 0.392,
+    "segments": 9,
+    "kept_span_s": 29.41,
+    "transcribed_words": 138,
+    "overlays": 4
+  },
+  "qa": {
+    "video_dur": 29.54,
+    "audio_dur": 29.6,
+    "av_drift": 0.058,
+    "sync_ok": true,
+    "black_ok": true
+  },
+  "qa_frames": [
+    "kw_0.jpg",
+    "kw_1.jpg",
+    "kw_2.jpg",
+    "kw_3.jpg"
+  ],
+  "has_contact_sheet": true
+}

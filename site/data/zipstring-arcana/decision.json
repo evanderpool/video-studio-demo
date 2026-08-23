@@ -1,0 +1,47 @@
+{
+  "slug": "zipstring-arcana",
+  "title": "Zipstring Arcana",
+  "variant": "demo",
+  "theme": "A web-shooter toy that fires string, auto-returns it, and glows \u2014 watch it shoot.",
+  "brain_reason": "He shoots webs on camera + shows the string auto-returning and the glow \u2014 strong in-use proof.",
+  "edit_notes": "Demo-led + TIGHT per the last regen note \u2014 no silent staging gaps kept; every span has narration audio (he's shooting webs while he talks). Dropped the duplicate 'want to shoot webs all day' sentence and the trailing 'that's them, enjoy' ramble. 'Spider-Man' stays in his voice only \u2014 never in a pop (trademark).",
+  "grade": "subtle",
+  "compliance_dropped": [],
+  "other_variants": [
+    {
+      "style": "value",
+      "theme": "Everything the Arachnid web-shooter does \u2014 fires string, auto-returns, glows, 5 strings.",
+      "reason": "4+ real features (35mph, safe, string auto-returns/no-tangle, USB-C, glow, 5 strings) plus the demo \u2014 carries an 'everything you get' edit.",
+      "duration": 26.75
+    },
+    {
+      "style": "scarcity",
+      "theme": "The summer web-shooter that flies off the shelf \u2014 grab one before they're out.",
+      "reason": "Genuine SEASONAL urgency \u2014 it's a summer kids' toy and he says it 'flies off the shelf in the summer' (real demand, not manufactured). Note: it's NOT a limited edition, so the urgency stays soft/seaso",
+      "duration": 16.04
+    }
+  ],
+  "stats": {
+    "raw_duration_s": 123.57,
+    "output_duration_s": 27.1,
+    "kept_ratio": 0.219,
+    "segments": 9,
+    "kept_span_s": 26.88,
+    "transcribed_words": 158,
+    "overlays": 4
+  },
+  "qa": {
+    "video_dur": 27.04,
+    "audio_dur": 27.1,
+    "av_drift": 0.058,
+    "sync_ok": true,
+    "black_ok": true
+  },
+  "qa_frames": [
+    "kw_0.jpg",
+    "kw_1.jpg",
+    "kw_2.jpg",
+    "kw_3.jpg"
+  ],
+  "has_contact_sheet": true
+}

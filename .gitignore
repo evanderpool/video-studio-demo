@@ -1,0 +1,8 @@
+# nothing private is ever generated here, but belt-and-braces:
+*.mov
+raw/
+work/
+transcripts/
+*.env
+.app_key
+__pycache__/

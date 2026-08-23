@@ -1,0 +1,34 @@
+{
+  "slug": "levoit-vital-100s",
+  "title": "Levoit Vital 100S Air Purifier",
+  "variant": "single",
+  "theme": "The Levoit Vital 100S - a red/orange/green air-quality sensor + true HEPA filter that clears post-cooking air, often out of stock.",
+  "brain_reason": null,
+  "edit_notes": "RE-EDIT per the note ('a lot of words cut mid-sentence - complete the sentences, keep it logical and readable'). Rebuilt so EVERY kept span ends on a full sentence (a period), not a mid-phrase fragment: hook -> name -> the full color-sensor scale as three complete lines (red=bad / orange=getting there / green or blue=all good) -> what it catches -> how fast -> 'True HEPA filter, AND it has an app to always know your air quality' (the original chopped off the 'and it has an app...' clause, leaving a 'True HEPA filter' fragment - restored here) -> the full scarcity CTA. Dropped one redundant whole sentence ('the red means... trying to make sure the home and kitchen stays clean' - the color scale already covers red) rather than clipping anything. ~37s. Reads start-to-finish as complete thoughts.",
+  "grade": "clean",
+  "compliance_dropped": [],
+  "other_variants": [],
+  "stats": {
+    "raw_duration_s": 74.88,
+    "output_duration_s": 40.0,
+    "kept_ratio": 0.534,
+    "segments": 11,
+    "kept_span_s": 39.78,
+    "transcribed_words": 187,
+    "overlays": 4
+  },
+  "qa": {
+    "video_dur": 39.92,
+    "audio_dur": 40.0,
+    "av_drift": 0.083,
+    "sync_ok": true,
+    "black_ok": true
+  },
+  "qa_frames": [
+    "kw_0.jpg",
+    "kw_1.jpg",
+    "kw_2.jpg",
+    "kw_3.jpg"
+  ],
+  "has_contact_sheet": true
+}

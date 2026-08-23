@@ -1,0 +1,101 @@
+{
+  "title": "Levoit Vital 100S Air Purifier",
+  "theme": "The Levoit Vital 100S - a red/orange/green air-quality sensor + true HEPA filter that clears post-cooking air, often out of stock.",
+  "notes": "RE-EDIT per the note ('a lot of words cut mid-sentence - complete the sentences, keep it logical and readable'). Rebuilt so EVERY kept span ends on a full sentence (a period), not a mid-phrase fragment: hook -> name -> the full color-sensor scale as three complete lines (red=bad / orange=getting there / green or blue=all good) -> what it catches -> how fast -> 'True HEPA filter, AND it has an app to always know your air quality' (the original chopped off the 'and it has an app...' clause, leaving a 'True HEPA filter' fragment - restored here) -> the full scarcity CTA. Dropped one redundant whole sentence ('the red means... trying to make sure the home and kitchen stays clean' - the color scale already covers red) rather than clipping anything. ~37s. Reads start-to-finish as complete thoughts.",
+  "grade": "clean",
+  "pop_style": "glass",
+  "ranges": [
+    {
+      "start": 1.21,
+      "end": 3.66,
+      "beat": "Testing right off cooking - it's already doing the work",
+      "motion": "in"
+    },
+    {
+      "start": 8.15,
+      "end": 10.59,
+      "beat": "Testing right off cooking - it's already doing the work",
+      "motion": "out"
+    },
+    {
+      "start": 18.37,
+      "end": 20.82,
+      "beat": "This is the Levoit Vital 100S.",
+      "motion": "in"
+    },
+    {
+      "start": 23.09,
+      "end": 26.08,
+      "beat": "When it's red, you have bad air quality.",
+      "motion": "out"
+    },
+    {
+      "start": 27.98,
+      "end": 31.65,
+      "beat": "When it's orange, it's getting there.",
+      "motion": "in"
+    },
+    {
+      "start": 34.98,
+      "end": 37.44,
+      "beat": "Green or blue means you're all good.",
+      "motion": "out"
+    },
+    {
+      "start": 39.21,
+      "end": 44.68,
+      "beat": "It catches burnt smell, pollen, dander, pet hair.",
+      "motion": "in"
+    },
+    {
+      "start": 46.6,
+      "end": 50.41,
+      "beat": "And it does this in seconds - 2-3 minutes at most.",
+      "motion": "out"
+    },
+    {
+      "start": 53.11,
+      "end": 54.68,
+      "beat": "True HEPA filter, and an app to always know your air.",
+      "motion": "in"
+    },
+    {
+      "start": 57.44,
+      "end": 59.74,
+      "beat": "True HEPA filter, and an app to always know your air.",
+      "motion": "out"
+    },
+    {
+      "start": 62.98,
+      "end": 73.15,
+      "beat": "Often out of stock - grab yours now, highly recommend.",
+      "motion": "in"
+    }
+  ],
+  "overlays": [
+    {
+      "text": "JUST FINISHED COOKING?",
+      "style": "glass",
+      "start_in_output": 0.79,
+      "duration": 2.0
+    },
+    {
+      "text": "RED ORANGE GREEN",
+      "style": "glass",
+      "start_in_output": 11.05,
+      "duration": 1.6
+    },
+    {
+      "text": "PET HAIR & DANDER",
+      "style": "glass",
+      "start_in_output": 20.15,
+      "duration": 1.6
+    },
+    {
+      "text": "TRUE HEPA FILTER",
+      "style": "glass",
+      "start_in_output": 25.73,
+      "duration": 1.6
+    }
+  ]
+}
