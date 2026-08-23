@@ -1,13 +1,3 @@
----
-title: Video Studio Demo
-emoji: 🎬
-colorFrom: yellow
-colorTo: gray
-sdk: docker
-app_port: 7860
-pinned: false
----
-
 # Video Studio — public demo
 
 Five finished short-form videos cut by an LLM editing brain, each shown with its
@@ -15,33 +5,14 @@ complete decision trace: the beats it kept (and where they sat in the raw take),
 the keyword pops it authored and timed, its reasoning, alternate cuts it
 produced, and the automated QA verdict on the render.
 
-**The production system is local-first and private by design.** The gallery is
-a read-only export of its *outputs and artifacts*. The **Try it** section runs
-a deliberately small, isolated re-implementation of the same stages on a
-5–60 s clip you upload — it is not the private app exposed.
+**The production system is local-first and private by design.** This site is a
+read-only export of its *outputs and artifacts* — no server, no uploads, no
+API calls. Raw footage, transcripts, and analytics never leave the machine.
+(A rate-limited upload-and-cut service was built and tested, then deliberately
+not deployed: a public host would have to accept strangers' video, and the
+project's privacy posture is worth more than the demo. It lives in git history.)
 
-## Try-it service (`server/`)
-
-`normalize → faster-whisper (small.en, CPU) → brain → FFmpeg render → QA → trace`
-
-Built for anonymous internet users, so:
-
-| control | value (env) |
-|---|---|
-| clip length | `MIN_SECONDS=5` … `MAX_SECONDS=60` — checked with ffprobe before any work |
-| upload size | `MAX_UPLOAD_MB=80`, streamed to disk, connection cut on overflow |
-| file types | mp4 / mov / webm / m4v; must contain a video **and** an audio stream |
-| rate limits | `PER_IP_PER_HOUR=3`, `GLOBAL_PER_DAY=60`, `QUEUE_MAX=4` (only *accepted* clips count) |
-| proxy trust | `TRUST_PROXY=1` reads the last `X-Forwarded-For` hop (the platform proxy) |
-| retention | `RETENTION_MIN=30` — job dir deleted after that, or immediately on failure |
-| brain | **`BRAIN=heuristic` (the default and what the public Space runs): local rules, no model call, no network.** `BRAIN=api` + `ANTHROPIC_API_KEY` enables Claude, capped by `DAILY_API_CAP=30`, always falling back to heuristic |
-| process | one worker thread; every subprocess is an arg list (no shell); paths are server-built; job ids are 96-bit random; docs/openapi disabled |
-| output | 720×1280, all metadata stripped, `Cache-Control: no-store` |
-
-The static gallery still works with no server at all (GitHub Pages / Vercel);
-the Try-it section only appears when `/api/health` answers.
-
-### The brain seam (demo vs. production)
+## The brain seam (demo vs. production)
 
 The production Video Studio routes every editing decision through one JSON
 contract with **three interchangeable backends**:
@@ -53,16 +24,7 @@ contract with **three interchangeable backends**:
 | Anthropic API | server, unattended | cents / video, capped | phone-sent jobs |
 
 The five gallery videos were cut by the Claude backends (their reasoning is
-shown verbatim). The Try-it service ships with the local-rules backend on
-purpose: no model spend for anonymous traffic, no key on the public host, and
-nothing leaves the container. Flip `BRAIN=api` with a key to see the model path.
-
-## Run the service locally
-
-```
-pip install -r requirements.txt          # needs ffmpeg on PATH
-uvicorn server.app:app --port 7860
-```
+shown verbatim). A public upload path would run the local-rules backend only — no model spend for anonymous traffic, no key on a public host.
 
 ## How this bundle is produced
 

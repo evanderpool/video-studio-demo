@@ -51,7 +51,6 @@
   }
   openBay(0, false);
 
-  tryIt();
 
   function buildBay(i, base, edl, dec, indexLabel) {
     const el = tpl.content.firstElementChild.cloneNode(true);
@@ -175,83 +174,6 @@
     // pause others when one plays
     video.addEventListener("play", () => document.querySelectorAll("video").forEach((v) => v !== video && v.pause()));
     return el;
-  }
-
-  async function tryIt() {
-    const API = (window.API_BASE || "").replace(/\/$/, "");
-    const api = (p) => (API ? `${API}/${p}` : p);
-    let health;
-    try { health = await (await fetch(api("api/health"), { cache: "no-store" })).json(); } catch { return; }
-    if (!health?.ok) return;
-    const sec = document.getElementById("try");
-    sec.hidden = false;
-    document.getElementById("try-limits").textContent = `${health.min_seconds}–${health.max_seconds} s`;
-    document.getElementById("try-mb").textContent = health.max_mb;
-    document.getElementById("try-ret").textContent = health.retention_min;
-    document.getElementById("try-brain").textContent = health.brain === "api" ? "Claude (capped)" : "offline rules";
-
-    const drop = document.getElementById("drop"), input = document.getElementById("file");
-    const idle = drop.querySelector(".drop-idle"), busy = drop.querySelector(".drop-busy");
-    const err = document.getElementById("drop-err"), note = document.getElementById("busy-note");
-    const result = document.getElementById("try-result");
-    let running = false;
-
-    drop.addEventListener("click", () => !running && input.click());
-    drop.addEventListener("dragover", (e) => { e.preventDefault(); if (!running) drop.classList.add("over"); });
-    drop.addEventListener("dragleave", () => drop.classList.remove("over"));
-    drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); if (!running && e.dataTransfer.files[0]) submit(e.dataTransfer.files[0]); });
-    input.addEventListener("change", () => input.files[0] && submit(input.files[0]));
-
-    function setStage(stage) {
-      const order = [...busy.querySelectorAll("[data-stage]")].map((li) => li.dataset.stage);
-      const k = order.indexOf(stage);
-      busy.querySelectorAll("[data-stage]").forEach((li, n) => {
-        li.classList.toggle("done", n < k);
-        li.classList.toggle("live", n === k);
-      });
-    }
-
-    async function submit(file) {
-      running = true; err.hidden = true; result.innerHTML = "";
-      idle.hidden = true; busy.hidden = false; drop.classList.add("busy");
-      note.textContent = `Uploading ${(file.size / 1048576).toFixed(1)} MB…`;
-      setStage("queued");
-      try {
-        const fd = new FormData(); fd.append("file", file, file.name);
-        const r = await fetch(api("api/try"), { method: "POST", body: fd });
-        const j = await r.json();
-        if (!r.ok) throw new Error(j.error || r.statusText);
-        note.textContent = `${j.raw_duration_s}s clip accepted. This takes roughly one to two minutes on a shared CPU.`;
-        await poll(j.id);
-      } catch (e) {
-        err.textContent = e.message; err.hidden = false;
-      } finally {
-        running = false; idle.hidden = false; busy.hidden = true; drop.classList.remove("busy"); input.value = "";
-      }
-    }
-
-    async function poll(id) {
-      for (;;) {
-        await new Promise((r) => setTimeout(r, 1500));
-        const r = await fetch(api(`api/jobs/${id}`), { cache: "no-store" });
-        if (!r.ok) throw new Error("job disappeared");
-        const j = await r.json();
-        if (j.state === "error") throw new Error(j.error || "processing failed");
-        setStage(j.stage);
-        if (j.state === "queued" && j.position > 1) note.textContent = `Queued — ${j.position - 1} ahead of you.`;
-        if (j.state === "done") {
-          const base = api(`api/jobs/${id}/`);
-          const [edl, dec] = await Promise.all([fetch(base + "edl.json").then((x) => x.json()), fetch(base + "decision.json").then((x) => x.json())]);
-          const bay = buildBay(0, base, edl, dec, "YOU");
-          const ex = document.createElement("p"); ex.className = "expiry";
-          ex.textContent = `This result and your file are deleted from the server in ${Math.round(j.expires_in_s / 60)} min. Right-click the video to save it.`;
-          bay.querySelector(".bay-head").after(ex);
-          result.appendChild(bay);
-          bay.scrollIntoView({ behavior: "smooth", block: "start" });
-          return;
-        }
-      }
-    }
   }
 
   function countUp(el, target, decimals) {

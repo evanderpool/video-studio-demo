@@ -189,32 +189,6 @@ a { color: inherit; }
   .stats { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* try it */
-.try { padding: 2.2rem clamp(1.2rem, 5vw, 4rem) 2.6rem; border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(255,179,35,.05), transparent 70%); }
-.try-head h2 { font-size: clamp(1.7rem, 3.6vw, 2.8rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; margin: .1em 0 .5em; }
-.try-lede { color: var(--ink-2); max-width: 70ch; margin: 0 0 1.4rem; }
-.try-lede b { color: var(--ink); font-weight: 700; }
-.drop {
-  position: relative; border: 1px dashed var(--accent); border-radius: 6px; padding: 2.2rem 1.5rem;
-  text-align: center; cursor: pointer; transition: background .15s, border-color .15s; max-width: 860px;
-}
-.drop:hover, .drop.over { background: rgba(255,179,35,.07); border-style: solid; }
-.drop.busy { cursor: default; border-style: solid; }
-.drop-idle { display: flex; flex-direction: column; gap: .4rem; align-items: center; }
-.drop-icon { font-size: 1.4rem; color: var(--accent); transform: translateY(-2px); }
-.drop-idle small { font-family: var(--mono); font-size: .68rem; color: var(--ink-3); letter-spacing: .06em; }
-.stages { list-style: none; margin: 0 0 .8rem; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem; }
-.stages li { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
-  padding: .35rem .7rem; border: 1px solid var(--line); color: var(--ink-3); border-radius: 2px; }
-.stages li.done { color: var(--ok); border-color: var(--ok); }
-.stages li.live { color: var(--accent); border-color: var(--accent); animation: pulse 1.2s ease-in-out infinite; }
-@keyframes pulse { 50% { background: rgba(255,179,35,.15); } }
-.busy-note { margin: 0; color: var(--ink-2); font-size: .9rem; }
-.drop-err { margin: 1rem 0 0; color: var(--bad); font-family: var(--mono); font-size: .8rem; }
-#try-result .bay { padding-left: 0; padding-right: 0; border-bottom: 0; margin-top: 1.6rem; }
-#try-result .bay-head .index { color: var(--ok); }
-.expiry { font-family: var(--mono); font-size: .7rem; color: var(--ink-3); margin: .6rem 0 0; }
 
 /* brains */
 .brains { padding: 2.2rem clamp(1.2rem, 5vw, 4rem); border-bottom: 1px solid var(--line); }

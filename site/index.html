@@ -38,35 +38,6 @@
   </ol>
 </section>
 
-<section class="try" id="try" hidden>
-  <div class="try-head">
-    <p class="label">Try it live</p>
-    <h2>Upload a talking take. <span class="accent">Get the cut back.</span></h2>
-    <p class="try-lede">One clip, <b id="try-limits">5–60 s</b>, mp4 / mov / webm, with you speaking on camera. It runs the same stages as the five above — transcribe, decide, render, verify — and shows you the decision trace. <b>This demo's brain is the local rules engine</b> (no model call, no network); the production system swaps in a live Claude session or the Anthropic API behind the same contract. Your file is processed in memory-scale temp storage and <b>deleted <span id="try-ret">30</span> minutes</b> after it finishes. Nothing is kept, logged, or used for anything else.</p>
-  </div>
-  <form class="drop" id="drop">
-    <input type="file" id="file" accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm,.m4v" hidden>
-    <div class="drop-idle">
-      <span class="drop-icon">▲</span>
-      <span>Drop a clip here or <u>choose a file</u></span>
-      <small>≤ <span id="try-mb">80</span> MB · vertical works best · brain: <span id="try-brain">—</span></small>
-    </div>
-    <div class="drop-busy" hidden>
-      <ol class="stages">
-        <li data-stage="queued">Queued</li>
-        <li data-stage="normalizing">Normalize</li>
-        <li data-stage="transcribing">Transcribe</li>
-        <li data-stage="deciding">Decide</li>
-        <li data-stage="rendering">Render</li>
-        <li data-stage="verifying">Verify</li>
-      </ol>
-      <p class="busy-note" id="busy-note">Uploading…</p>
-    </div>
-    <p class="drop-err" id="drop-err" hidden></p>
-  </form>
-  <div id="try-result"></div>
-</section>
-
 <main class="gallery">
   <p class="label">Five finished cuts <small>click one to open its decision trace</small></p>
   <div class="grid" id="grid"></div>
@@ -134,11 +105,11 @@
 <section class="brains">
   <p class="label">The brain is a swappable seam</p>
   <div class="brain-grid">
-    <div><b>Local rules</b><span>Silence-split phrases, number+unit and power-word pops. Offline, free, deterministic. <em>What this public demo runs.</em></span></div>
+    <div><b>Local rules</b><span>Silence-split phrases, number+unit and power-word pops. Offline, free, deterministic. <em>The fallback every other mode degrades to.</em></span></div>
     <div><b>Live Claude session</b><span>Production default on the desktop: a Claude Code session reads transcript + sampled frames and writes the decision file. Covered by a flat subscription.</span></div>
     <div><b>Anthropic API</b><span>Unattended mode for phone-sent jobs: same JSON contract, cents per video, spend-capped. Falls back to local rules on any failure.</span></div>
   </div>
-  <p class="brain-note">The five gallery cuts above were made by the Claude modes; their reasoning is shown verbatim. One JSON contract, three backends — the model is a component, not the system.</p>
+  <p class="brain-note">The five cuts above were made by the Claude modes; their reasoning is shown verbatim. One JSON contract, three backends — the model is a component, not the system.</p>
 </section>
 
 <footer class="foot">
@@ -146,7 +117,6 @@
   <p class="label">Python · FastAPI · Anthropic Claude (multimodal) · faster-whisper · FFmpeg · HyperFrames</p>
 </footer>
 
-<script src="config.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
