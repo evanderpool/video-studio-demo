@@ -43,7 +43,7 @@ PICKS = {
 SCRUB_PATTERNS = [
     r"[A-Za-z]:\\",                 # any Windows absolute path
     r"/Users/",                     # any *nix home path
-    r"\bEr" + r"ick\b", r"Vander" + r"pool",  # author identity (split so this file passes its own gate)
+    r"\bEr" + r"ick\b", r"(?<![a-z])Vander" + r"pool",  # author surname; the public GitHub handle is allowed (split so this file passes its own gate)
     r"\b100\.64\.", r"tailscale",   # tailnet
     r"sk-ant", r"APP_KEY", r"app_key",
     r"[\w.+-]+@[A-Za-z][\w-]*\.[A-Za-z]{2,}",  # email (letters-first domain + alpha TLD)

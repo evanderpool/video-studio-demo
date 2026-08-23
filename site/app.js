@@ -178,8 +178,10 @@
   }
 
   async function tryIt() {
+    const API = (window.API_BASE || "").replace(/\/$/, "");
+    const api = (p) => (API ? `${API}/${p}` : p);
     let health;
-    try { health = await (await fetch("api/health", { cache: "no-store" })).json(); } catch { return; }
+    try { health = await (await fetch(api("api/health"), { cache: "no-store" })).json(); } catch { return; }
     if (!health?.ok) return;
     const sec = document.getElementById("try");
     sec.hidden = false;
@@ -216,7 +218,7 @@
       setStage("queued");
       try {
         const fd = new FormData(); fd.append("file", file, file.name);
-        const r = await fetch("api/try", { method: "POST", body: fd });
+        const r = await fetch(api("api/try"), { method: "POST", body: fd });
         const j = await r.json();
         if (!r.ok) throw new Error(j.error || r.statusText);
         note.textContent = `${j.raw_duration_s}s clip accepted. This takes roughly one to two minutes on a shared CPU.`;
@@ -231,14 +233,14 @@
     async function poll(id) {
       for (;;) {
         await new Promise((r) => setTimeout(r, 1500));
-        const r = await fetch(`api/jobs/${id}`, { cache: "no-store" });
+        const r = await fetch(api(`api/jobs/${id}`), { cache: "no-store" });
         if (!r.ok) throw new Error("job disappeared");
         const j = await r.json();
         if (j.state === "error") throw new Error(j.error || "processing failed");
         setStage(j.stage);
         if (j.state === "queued" && j.position > 1) note.textContent = `Queued — ${j.position - 1} ahead of you.`;
         if (j.state === "done") {
-          const base = `api/jobs/${id}/`;
+          const base = api(`api/jobs/${id}/`);
           const [edl, dec] = await Promise.all([fetch(base + "edl.json").then((x) => x.json()), fetch(base + "decision.json").then((x) => x.json())]);
           const bay = buildBay(0, base, edl, dec, "YOU");
           const ex = document.createElement("p"); ex.className = "expiry";

@@ -21,6 +21,7 @@ from collections import defaultdict, deque
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -42,6 +43,10 @@ RETENTION_MIN = float(os.environ.get("RETENTION_MIN", "30"))
 TRUST_PROXY = os.environ.get("TRUST_PROXY", "1") == "1"
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
+# The static gallery (GitHub Pages) calls this service cross-origin for the Try-it section only.
+_origins = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()]
+if _origins:
+    app.add_middleware(CORSMiddleware, allow_origins=_origins, allow_methods=["GET", "POST"], allow_headers=["*"], max_age=3600)
 
 _jobs: dict[str, dict] = {}
 _queue: deque[str] = deque()
