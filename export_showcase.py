@@ -193,8 +193,10 @@ def export_one(slug: str, proj: str, variant: str | None) -> dict:
 
 def scrub_gate(root: Path) -> None:
     hits = []
+    # the case study is an author-bylined portfolio doc - the name IS intentional there
+    EXEMPT = {"CASE-STUDY.md", "case-study.html", "render_case_study.py"}
     for p in root.rglob("*"):
-        if ".git" in p.parts or "__pycache__" in p.parts:
+        if ".git" in p.parts or "__pycache__" in p.parts or p.name in EXEMPT:
             continue
         if p.suffix.lower() in (".json", ".md", ".txt", ".html", ".js", ".css"):
             text = p.read_text(encoding="utf-8", errors="replace")

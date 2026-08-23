@@ -5,6 +5,8 @@ complete decision trace: the beats it kept (and where they sat in the raw take),
 the keyword pops it authored and timed, its reasoning, alternate cuts it
 produced, and the automated QA verdict on the render.
 
+**[Read the full case study →](https://evanderpool.github.io/video-studio-demo/case-study.html)** — architecture, the swappable brain seam, prompting design, the compliance backstop, and the measured 66-video rollup. Source: [CASE-STUDY.md](CASE-STUDY.md), rendered by `render_case_study.py`.
+
 **The production system is local-first and private by design.** This site is a
 read-only export of its *outputs and artifacts* — no server, no uploads, no
 API calls. Raw footage, transcripts, and analytics never leave the machine.

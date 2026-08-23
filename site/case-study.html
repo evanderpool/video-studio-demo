@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Video Studio — case study</title>
+<meta name="description" content="How Video Studio works: a local-first short-form video editor with a swappable brain seam, code-enforced compliance, and a self-reviewing render.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f0e0c;--bg-2:#161411;--panel:#1c1915;--line:#2c2823;--ink:#efe9dd;--ink-2:#a89f90;--ink-3:#6d665b;--accent:#ffb323;--ok:#7fd58a;
+--display:"Bricolage Grotesque","Helvetica Neue",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--display);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;
+background-image:radial-gradient(1200px 600px at 80% -10%,rgba(255,179,35,.07),transparent 60%)}
+.wrap{max-width:820px;margin:0 auto;padding:clamp(1.4rem,4vw,3rem) clamp(1.2rem,5vw,2rem) 5rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2rem}
+.eyebrow a{color:var(--accent);text-decoration:none}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.02;font-weight:800;letter-spacing:-.03em;margin:.2em 0 .5em}
+h2{font-size:clamp(1.3rem,3vw,1.7rem);font-weight:700;letter-spacing:-.02em;margin:2.6rem 0 .8rem;padding-bottom:.5rem;border-bottom:1px solid var(--line)}
+h3{font-size:1.1rem;font-weight:700;margin:1.8rem 0 .5rem}
+p{margin:.9rem 0;color:var(--ink)}
+a{color:var(--accent)}
+strong{color:#fff;font-weight:700}
+em{color:var(--ink-2)}
+code{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-family:var(--mono);font-size:.85em}
+ul{margin:1rem 0;padding-left:1.3rem}
+li{margin:.5rem 0;color:var(--ink)}
+li::marker{color:var(--accent)}
+hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
+blockquote{margin:1.4rem 0;padding:.9rem 1.2rem;border-left:3px solid var(--accent);background:var(--bg-2);border-radius:0 6px 6px 0;font-size:1.05rem}
+blockquote strong{color:var(--accent)}
+pre{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:1.1rem 1.2rem;overflow-x:auto;font-family:var(--mono);font-size:.72rem;line-height:1.5;color:var(--ink-2)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:2rem 0}
+.stat{background:var(--bg-2);padding:1.1rem 1rem}
+.stat .v{font-size:1.9rem;font-weight:800;letter-spacing:-.03em;color:var(--accent);line-height:1}
+.stat .l{font-size:.72rem;color:var(--ink-3);margin-top:.45rem;line-height:1.35}
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.92rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.55rem .8rem;text-align:left;vertical-align:top}
+th{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);background:var(--bg-2)}
+td strong{color:var(--accent)}
+.backbar{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.72rem;color:var(--ink-3)}
+.backbar a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="eyebrow"><a href="index.html">← back to the demo</a> · case study</div>
+<h1>Video Studio: a short-form editor with a swappable brain</h1>
+<p><strong>A local-first pipeline that turns a raw talking-head take into a tight, captioned, retention-engineered vertical video — where the AI that makes the editing decisions is a plug-in component, not the system, and every render is screenshot-verified before it counts as done.</strong></p>
+<p>Built and directed by <strong>Erick Vanderpool</strong> · a portfolio project of Artificial Management · <a href="https://evanderpool.github.io/video-studio-demo/">public demo (outputs + decision traces) →</a></p>
+<p><em>The production repository is private by design — it holds an operational security history and competitor research. This case study leads with architecture, measured results, and the decisions behind them; the public demo shows real outputs with their full decision traces.</em></p>
+<div class="stats"><div class="stat"><div class="v">11 days</div><div class="l">build history, 56 commits</div></div><div class="stat"><div class="v">66</div><div class="l">videos produced</div></div><div class="stat"><div class="v">107</div><div class="l">finished cuts rendered</div></div><div class="stat"><div class="v">106/106</div><div class="l">passed automated A/V + black-frame QA</div></div><div class="stat"><div class="v">$0</div><div class="l">recurring cost</div></div></div>
+<hr>
+<h2>The problem</h2>
+<p>Short-form product video has one brutal, measured truth: <strong>length and the first second decide everything.</strong> Before a line of pipeline code, 320 competitor videos were studied across four creator profiles — and the pattern held. The strongest account posted a <strong>39-second</strong> median with <strong>22% of videos clearing 100k views</strong>; the weakest posted <strong>48-second</strong> videos and landed <strong>zero hits in 80 tries.</strong> The same product — a portable fan — did <strong>4.8M views as a staged skit and 422 as a driveway demo: an ~11,000× swing from format alone.</strong></p>
+<p>So the goal was never &quot;use AI to edit video.&quot; It was: <strong>turn a raw clip of one person talking about a product into a 25–40-second vertical cut that wins on hook, proof, and pace — repeatably, and for $0 in recurring cost.</strong> Local transcription, local rendering, orchestration under a flat subscription. No per-video API bill, and nothing about the footage leaving the machine that filmed it.</p>
+<h2>The product</h2>
+<p>Drop a raw take into a phone-controlled app; get back a finished vertical video — dead air removed, the strongest take kept, on-screen keyword pops timed to the words, loudness normalized to broadcast spec, and a QA contact sheet proving it. The app runs on the desktop and is reachable from a phone over a private VPN, so the workflow is: film on the phone, send to the PC, review the cut back on the phone.</p>
+<p>The interface is six tabs — Overview, Inventory, Script, Make, Library, Plan — covering the whole loop from &quot;what should I film this week&quot; through scripting, editing, QA, and a posting calendar. But the engineering story is one layer down, in four ideas: <strong>a brain that swaps, a decision contract that every brain obeys, a compliance backstop that lives in code, and a render that checks its own work.</strong></p>
+<h2>How a cut is made</h2>
+<p>Every video runs the same seven stages. The AI only decides <em>which</em> moments to keep and <em>what</em> to put on screen — everything around it is deterministic code:</p>
+<pre>  Raw take in  (one person, one product, filmed phone-first)
+        │
+        ▼
+  Transcribe   (local faster-whisper, word-level timestamps — the video
+        │       never leaves the machine)
+        ▼
+  Measure      (ffmpeg silencedetect maps real dead air; ebur128 measures
+        │       per-phrase delivery energy; frames sampled + CV-tagged)
+        ▼
+  Decide  ┌───────────────────────────────────────────────────────┐
+        │ │  THE BRAIN SEAM — one JSON contract, three backends:   │
+        │ │  local rules · a live Claude session · the API         │
+        │ │  picks the beats, their order, the zoom, the pop text  │
+        │ └───────────────────────────────────────────────────────┘
+        ▼
+  Comply       (policy.py strips any on-screen claim TikTok Shop forbids —
+        │       enforced in code, after the brain, for every backend)
+        ▼
+  Render       (ffmpeg: frame-snapped cuts, ±8% corrective grade, HyperFrames
+        │       keyword pops, surgical captions, −14 LUFS loudness)
+        ▼
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  VERIFY — the render checks its own work                       ║
+  ║  A/V drift, black frames, freeze, loudness, true-peak, and a   ║
+  ║  QA contact sheet; then the brain watches the finished video   ║
+  ║  back on a frame grid and approves it or orders ONE recut.     ║
+  ╚═══════════════════════════════════════════════════════════════╝
+        │
+        ▼
+  Finished cut  (badged with which brain made it — a degraded fallback can
+                 never masquerade as a real edit)</pre>
+<blockquote><strong>The editing intelligence is a component behind a contract — not the system.</strong> Swap the brain and nothing else changes.</blockquote>
+<h2>The brain seam: the idea the whole system is built on</h2>
+<p>The hard part of building with an LLM is not calling it — it&#x27;s containing it. In Video Studio the model lives behind a seam. The pipeline — transcribe, measure, decide, comply, render, verify — is <strong>identical regardless of which brain answers.</strong> Only <em>who</em> chooses the cuts changes:</p>
+<table><thead><tr><th>Backend</th><th>Who decides</th><th>When</th><th>Cost</th></tr></thead><tbody><tr><td><strong>Local rules</strong></td><td>a deterministic heuristic (silence-split phrases, number+unit and power-word pops)</td><td>offline / fallback</td><td>free</td></tr><tr><td><strong>Live Claude session</strong></td><td>an attended Claude Code session reads the transcript + sampled frames and writes the decision file</td><td>desktop, hands-on</td><td>flat subscription</td></tr><tr><td><strong>API</strong></td><td>the Anthropic API answers unattended, for phone-sent jobs</td><td>away from the PC</td><td>cents per video</td></tr></tbody></table>
+<p>All three return the <strong>same JSON</strong>: which spans to keep (by source and timestamp), the grade, up to four keyword pops with their text and timing, a theme line, and a plain-English note on what was cut and why. That contract is enforced in one place — <code>_apply_response</code> — so <strong>every backend inherits the same guarantees</strong>: source validation, audio-aware dead-air trimming, cut-padding that protects the call-to-action, a hard four-pop cap, and pop text snapped to word boundaries. If a brain returns nothing usable, the system <strong>falls back to the local rules and labels itself as having done so</strong> — a degraded output can never pretend to be a real cut.</p>
+<p>This is the same architectural move that made a private tool safe to demo publicly: because the product has no AI <em>in</em> it — decisions arrive as a file through a queue — going from an attended desktop brain to an unattended API brain <strong>changed no pipeline code.</strong> It was a brain swap, not a rebuild.</p>
+<h3>The attended brain, and why it&#x27;s free</h3>
+<p>The default production brain is a live Claude Code session with a person at the keyboard. A small <strong>watcher</strong> program polls a queue; the instant an edit request lands, it exits and prints the backlog — which re-invokes the session to answer. That handshake is what makes the $0 cost real: the orchestration runs under a flat subscription instead of a metered API.</p>
+<p>The trade-off was chosen with eyes open, and written down: <strong>a video edit never silently ships a fallback.</strong> If no session is listening, the job <em>holds</em> — indefinitely — rather than quietly shipping a worse rule-based cut. Scripts, captions, and research keep a visible 30-minute template fallback, because their degraded output is obviously a draft; a video&#x27;s isn&#x27;t. That distinction — <em>which</em> failures are allowed to degrade silently and which must block — is the kind of judgment call the whole system is made of.</p>
+<h2>Prompting as engineering, not incantation</h2>
+<p>The prompts in this system are specifications. A few that show the standard:</p>
+<ul><li><strong>The editing brief refuses to guess.</strong> It hands the model the transcript, the silence map, per-phrase energy, and sampled frames, then imposes rules the model must obey: hook in the first second; <strong>&quot;the call-to-action is sacred&quot;</strong> (never clipped); <strong>end every kept span on a real pause</strong>, because cutting mid-phrase clips the last word&#x27;s sound; the first pop is a hook/pain line for muted scrollers, the rest are factual specs; never wall-to-wall captions. It closes vision guidance with <strong>&quot;never invent visual facts that aren&#x27;t visible in the frames.&quot;</strong></li></ul>
+<ul><li><strong>The scriptwriter is a strategist, not a copywriter.</strong> Its prompt says <em>&quot;do not restate the input — out-think it,&quot;</em> and forces an unprinted strategy pass (buyer, pain, top objections, one lead angle) before any words. It bans a named list of hollow adjectives — <em>&quot;amazing, premium, seamless, game-changer — each is a hole where a real detail should be&quot;</em> — and demands sensory specificity instead: <em>&quot;the 6am scramble, the tangled cable nest behind the TV.&quot;</em> Length is capped at ~110 words for a 25–40-second read, and <em>&quot;if you&#x27;re over budget, cut the weakest feature — never the hook, demo, or CTA.&quot;</em></li></ul>
+<ul><li><strong>The two prompt voices are kept honest by a metric.</strong> The editing rules exist as both an in-session brief and an API system prompt; a <code>measure_cuts</code> tool scores what fraction of cut-ends actually land on a sentence boundary, so a prompt change can be <em>measured</em> against real footage instead of eyeballed.</li></ul>
+<p>Every one of those constraints is a decision about what &quot;good&quot; means for this medium, encoded so the model can&#x27;t drift from it.</p>
+<h2>Multimodal: the brain looks at the footage</h2>
+<p>A transcript can&#x27;t tell you whether the product is on screen when it&#x27;s named, or which of two takes is sharper. So the pipeline samples frames from every clip — about one every four seconds for talking clips — labels each with the words being said at that moment, and runs cheap computer-vision tags on them: sharpness (variance-of-Laplacian), face detection and centering. The brain uses them to six documented ends — verify the product is visible when named, protect the proof-demo moment, prefer the sharper re-take, pick a scroll-stopping first frame, and keep a pop from landing over a centered face. On the API path the frames are base64 image blocks, thinned to a cost ceiling; on the attended path the session reads the JPEGs off disk. And the rule when a CV tag and the actual picture disagree: <strong>believe the frame.</strong></p>
+<h2>Compliance is a code backstop, not a polite request</h2>
+<p>TikTok Shop moderation weighs <strong>on-screen text more heavily than the spoken voice</strong> — a risky claim flashed on screen can high-risk-classify a video even when the sentence is qualified, and six strikes in 90 days freezes commissions. So compliance isn&#x27;t left to the prompt. <code>policy.py</code> is a hard filter that runs <strong>after</strong> the brain, on <strong>every</strong> backend, screening pops and captions against five categories — pricing, superlatives, health claims, brand comparisons, and false urgency — with the policy decisions written into the module:</p>
+<ul><li>price, health, and brand-comparison claims are <strong>blocked everywhere</strong>;</li><li>superlatives and urgency are <strong>blocked on screen but allowed in the spoken script</strong>;</li><li>&quot;limited edition&quot; is <strong>always allowed</strong> — it&#x27;s a genuine product attribute;</li><li><strong>urgency must be true</strong> — a real seasonal deadline or genuine scarcity, never a manufactured one.</li></ul>
+<p>The precision is in the details: a bare percentage passes (&quot;HEPA 99.97%&quot;) while &quot;50% off&quot; is caught; a pet product&#x27;s &quot;TREATS&quot; survives while &quot;treatment&quot; is blocked; a pop naming the video&#x27;s <em>own</em> brand survives while &quot;BETTER THAN [rival]&quot; drops. The prompts are the first line of defense so the risky text is never authored; <code>policy.py</code> is the backstop that assumes the prompt will sometimes fail — because on a live run, it did, and the filter was tightened the same day.</p>
+<h2>Measured, not claimed</h2>
+<p>The pipeline logs quantifiable results for every render — durations, QA verdicts, which brain decided — and this is the first time they&#x27;re rolled up. Across the 66 videos and 107 finished cuts on disk:</p>
+<table><thead><tr><th>What</th><th>Result</th><th>How it&#x27;s known</th></tr></thead><tbody><tr><td>A/V sync passed</td><td><strong>106 / 106</strong> cuts</td><td>`\</td><td>video − audio\</td><td>` duration checked per render</td></tr><tr><td>No black frames</td><td><strong>106 / 106</strong> cuts</td><td>ffmpeg <code>blackdetect</code> per render</td></tr><tr><td>Median A/V drift</td><td><strong>0.06 s</strong> (worst 0.15 s)</td><td>measured on the finished file</td></tr><tr><td>Landed in the 18–50 s target</td><td><strong>101 / 106</strong></td><td>duration is the #1 failure predictor, so a 90 s render can&#x27;t pass QA silently</td></tr><tr><td>Median compression</td><td><strong>86 s raw → 30 s cut</strong> (kept ratio 0.32)</td><td>~two-thirds of every take is dead air or weaker takes, removed</td></tr><tr><td>Self-review outcome</td><td><strong>47 approve, 2 recut</strong></td><td>the brain watched each finished cut back and ordered a recut when it saw a flaw</td></tr></tbody></table>
+<p>Those sync and black-frame numbers are the payoff of an A/V chain built deliberately: variable framerate converted to constant before scaling, frame-snapped cut boundaries, audio padded to the exact snapped length, and a <strong>concat filter with a single re-encode</strong> rather than the naive concat demuxer — because the demuxer accumulates AAC priming delay into visible drift. The rationale is written into the code, not just the result.</p>
+<h3>The render checks its own work</h3>
+<p>&quot;Verified&quot; here is mechanical. After every cut, one ffmpeg pass measures A/V drift, black frames, frozen frames, loudness, and true-peak, and renders a contact sheet plus a frame at each keyword pop. Then the attended brain does something most pipelines don&#x27;t: it <strong>watches the finished video back</strong> — as a one-frame-per-second grid — and answers six viewer questions (does the first second stop the scroll? any jarring jump-cuts? are the pops on the right frames and not over a face? is the proof-demo intact? does the CTA get clipped?). The verdict is <em>approve</em> or <em>recut</em>, exactly one recut allowed, then it ships — labeled <em>unreviewed</em> if the session times out, never silently. Of 49 reviewed cuts, it approved 47 and caught 2 worth redoing.</p>
+<h2>Directed across the stack — not just delegated</h2>
+<p>The AI wrote code and made per-video cuts. The architecture, the trade-offs, and the standards were decisions I owned and can defend — and that breadth is the real evidence of understanding the system, not just steering it. Each of these is written down in the project&#x27;s engineering log:</p>
+<ul><li><strong>Architecture.</strong> The brain seam — a JSON contract with three interchangeable backends and one central validator — was the founding decision. It&#x27;s why the system is free by default, why it went from private to publicly demoable without a rewrite, and why a bad model response can never ship as a real cut.</li><li><strong>Cost.</strong> $0 recurring was a <em>designed</em> constraint, not a corner cut: local faster-whisper replaced a paid speech API (kept schema-compatible so it was a true drop-in), local ffmpeg does the rendering, and the orchestration runs under a flat subscription. The accepted cost — &quot;the PC must be on, and a session must be listening&quot; — was weighed and documented, not stumbled into.</li><li><strong>Editing judgment.</strong> Every rule the brain obeys came from the 320-video study, encoded as code: the ≤45-second target enforced in QA, the mandatory proof-demo, surgical captions over wall-to-wall (the losing pattern), bounded ±8% corrective grade so a video looks clean without looking graded.</li><li><strong>Security.</strong> I ran two formal multi-persona reviews — six specialists, then four — that attacked the work and produced ranked punch-lists. When a live app key leaked into a log via a query string, I didn&#x27;t just rotate it; I removed query-string auth entirely (header + HttpOnly cookie only), scoped the firewall rule to the VPN&#x27;s address range, and verified the fix with a route smoke test. The public-demo decision — accept strangers&#x27; video, or don&#x27;t — I resolved on the privacy side and scrapped the upload path deliberately.</li><li><strong>Honesty as a discipline.</strong> Every cut is badged with the brain that made it. QA warns loudly rather than passing silently. A held video waits rather than shipping a worse one. When the reviews found real problems — captions that had never actually rendered, a metronomic zoom, analytics that summed the wrong channel — they&#x27;re recorded as findings, not hidden.</li></ul>
+<h2>The decisions that shaped it</h2>
+<p>A system like this is a pile of defended choices. A few that show the standard:</p>
+<ul><li><strong>Rank by what the pipeline controls.</strong> The affiliate export showed most commission came from live selling and ads — channels this tool doesn&#x27;t touch. The analytics were rebuilt to split by content type and rank products by their <em>video-attributed</em> number, so the tool recommends what filming can actually move, not what some other channel already sold.</li><li><strong>Urgency has to be real.</strong> The multi-variant editor produces value / demo / scarcity cuts from one take — but each has a viability gate, and the scarcity cut sets itself <em>invalid</em> rather than manufacture a fake deadline. A feature-list with no demo is likewise refused, because the study proved it&#x27;s the zero-hit pattern.</li><li><strong>Cache the expensive thing.</strong> Keyword pops are HTML rendered to transparent video through a headless browser — slow. They&#x27;re content-hashed and cached, so identical pops across a video&#x27;s three style variants and its regenerates never re-launch the browser, and editing the template invalidates the cache.</li><li><strong>Restore points as a habit.</strong> 20 git tags mark &quot;before I changed X,&quot; paired with local snapshots — so an experiment that goes wrong costs minutes, not the build.</li><li><strong>Real bugs, in someone else&#x27;s code.</strong> Adapting a third-party editing library to Windows surfaced ~6 genuine defects — a UTF-8 stdout crash, subtitle-path backslashes, a broken auto-grade metadata path, dropped video alpha — each found, fixed, and documented rather than worked around.</li></ul>
+<h2>Honest about what&#x27;s unfinished</h2>
+<p>The same reviews that praised the substance found real gaps, and they&#x27;re kept in the open: burned-in captions were built but a one-flag bug meant they hadn&#x27;t actually rendered in app-made videos (caught in review, fix staged); the zoom is mechanical where it should be beat-driven; there are no automated tests yet on the pure core, and the review names exactly which functions should get the first fifteen; and the biggest structural item — linking each finished video back to its script and product so a performance-learning loop can close — is scoped and waiting. A portfolio piece that hides its backlog isn&#x27;t credible; this one names it.</p>
+<h2>What it demonstrates</h2>
+<ul><li><strong>LLM systems design</strong> — a model contained behind a swappable contract with a central validator, three interchangeable backends, and graceful, <em>labeled</em> degradation.</li><li><strong>Prompt engineering</strong> — editing, strategist-scriptwriting, SEO, and self-review prompts that encode hard constraints and a measured feedback loop, not vibes.</li><li><strong>Multimodal reasoning</strong> — transcript plus CV-tagged frames driving concrete editing decisions, cost-bounded on the API path.</li><li><strong>Media engineering</strong> — a frame-accurate ffmpeg A/V chain (106/106 clean), loudness normalization, corrective grading, and browser-rendered motion graphics.</li><li><strong>Security &amp; compliance</strong> — VPN-gated auth, adversarial self-review, a code- enforced platform-policy filter, and a deliberate private/public boundary.</li><li><strong>Constraint-driven judgment</strong> — a genuinely useful daily tool built to a hard $0-recurring, local-first, single-operator constraint, with every trade-off written down.</li></ul>
+<hr>
+<p><strong>Erick Vanderpool</strong> — data analyst and AI engineer. <a href="https://github.com/evanderpool">github.com/evanderpool</a> · Video Studio is a portfolio project of Artificial Management. The production system is private; the <a href="https://evanderpool.github.io/video-studio-demo/">public demo</a> shows real outputs with their full decision traces.</p>
+<div class="backbar"><a href="index.html">← Video Studio demo</a> · <a href="https://github.com/evanderpool/video-studio-demo">repo</a></div>
+</main>
+</body>
+</html>
