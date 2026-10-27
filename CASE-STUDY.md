@@ -8,6 +8,8 @@ screenshot-verified before it counts as done.**
 Built and directed by **Erick Vanderpool** · a portfolio project of Artificial
 Management · [public demo (outputs + decision traces) →](https://evanderpool.github.io/video-studio-demo/)
 
+> **Update, October 2026:** this editor is now one part of **Paperclip**, an AI content management system run by seven Claude agents. [Read the Paperclip case study →](https://paperclip-case-study.vercel.app/) · [Media kit: real views and sales →](https://erickvanderpool.vercel.app)
+
 *The production repository is private by design — it holds an operational
 security history and competitor research. This case study leads with
 architecture, measured results, and the decisions behind them; the public demo

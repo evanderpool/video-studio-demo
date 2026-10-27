@@ -41,6 +41,25 @@ a { color: inherit; }
 .label small { text-transform: none; letter-spacing: 0; color: var(--ink-3); margin-left: .5em; }
 .accent { color: var(--accent); }
 
+/* case study bar */
+.casebar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: .7rem 1.4rem;
+  padding: .9rem clamp(1.2rem, 5vw, 4rem);
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+.casebar p { margin: 0; color: var(--ink-2); font-size: .92rem; max-width: 62ch; }
+.casebar p b { color: var(--ink); }
+.casebar-links { display: flex; flex-wrap: wrap; gap: .5rem; }
+.casebar a {
+  font-family: var(--mono); font-size: .78rem; white-space: nowrap; text-decoration: none;
+  padding: .55rem .9rem; border: 1px solid var(--line); border-radius: 999px; color: var(--ink);
+}
+.casebar a:hover, .casebar a:focus-visible { border-color: var(--accent); outline: none; }
+.casebar a.cb-primary { background: var(--accent); border-color: var(--accent); color: #1a1408; font-weight: 600; }
+.casebar a.cb-primary:hover, .casebar a.cb-primary:focus-visible { background: var(--accent-2); border-color: var(--accent-2); }
+
 /* masthead */
 .masthead {
   display: grid;
